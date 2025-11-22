@@ -84,7 +84,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="<?php echo BASE_URL; ?>">
+            <a class="navbar-brand fw-bold" href= "index.php?controller=home&action=index">
                 <i class="fa-solid fa-store me-2"></i>SIÊU THỊ MINI
             </a>
 
@@ -177,20 +177,33 @@
                 </ul>
             </nav>
 
-            <div id="content">
+           <div id="content">
                 <div class="container-fluid bg-white p-4 rounded shadow-sm" style="min-height: 85vh;">
+                    
                     <?php
+                    // Logic to display content
                     if (isset($viewFile) && file_exists($viewFile)) {
+                        // 1. If a specific view is requested (e.g., Product List), show it
                         require_once $viewFile;
                     } else {
-                        echo "<div class='text-center mt-5'>";
-                        echo "<h3>Chào mừng đến với Hệ thống Quản lý Siêu thị</h3>";
-                        echo "<p class='text-muted'>Vui lòng chọn chức năng từ menu bên trái.</p>";
-                        echo "</div>";
+                        // 2. If no view is requested (Base URL), show the Home Page (Dashboard)
+                        $homeView = 'views/home/homePage.php';
+                        if (file_exists($homeView)) {
+                            require_once $homeView;
+                        } else {
+                            // Fallback if home view is missing
+                            echo "<div class='text-center mt-5'>";
+                            echo "<h3>Dashboard</h3>";
+                            echo "<p class='text-muted'>Please create views/home/homePage.php to see the dashboard.</p>";
+                            echo "</div>";
+                        }
                     }
                     ?>
                 </div>
             </div>
+
+
+
 
         </div>
 
