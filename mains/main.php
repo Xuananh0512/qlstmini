@@ -120,11 +120,11 @@
                     MENU QUẢN LÝ
                 </div>
                 <ul class="nav flex-column list-unstyled components">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="<?php echo BASE_URL; ?>" class="nav-link">
                             <i class="fa-solid fa-house"></i> Trang chủ
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <a href="index.php?controller=category&action=list" class="nav-link">
